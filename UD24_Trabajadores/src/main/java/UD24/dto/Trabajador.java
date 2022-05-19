@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
 @Table(name="trabajador")//en caso que la tabla sea diferente
 
@@ -24,6 +25,7 @@ public class Trabajador {
 		@Column(name = "salario")//no hace falta si se llama igual
 		private int salario;
 		
+		private String trabajador;
 		
 		//Constructor por defecto
 		
@@ -33,18 +35,20 @@ public class Trabajador {
 
 		//Constructor con atributos
 		
-		public Trabajador(Long id, String nombre, String apellido, String puesto, int salario) {
-			this.id = id;
-			this.nombre = nombre;
-			this.apellido = apellido;
-			this.puesto = puesto;
-			this.salario = salario;
-		}
+		
 		
 		//Getters & Setters
 
 		public Long getId() {
 			return id;
+		}
+
+		public Trabajador(Long id, String nombre, String apellido, UD24.controller.Trabajador trabajador) {
+			super();
+			this.id = id;
+			this.nombre = nombre;
+			this.apellido = apellido;
+			this.trabajador = UD24.controller.Trabajador.getTrabajo(trabajador);
 		}
 
 		public void setId(Long id) {
@@ -66,13 +70,14 @@ public class Trabajador {
 		public void setApellido(String apellido) {
 			this.apellido = apellido;
 		}
+		
 
-		public String getPuesto() {
-			return puesto;
+		public String getTrabajo() {
+			return trabajador;
 		}
 
-		public void setPuesto(String puesto) {
-			this.puesto = puesto;
+		public void setTrabajo(String trabajo) {
+			this.trabajador = trabajo;
 		}
 
 		public int getSalario() {
@@ -82,12 +87,11 @@ public class Trabajador {
 		public void setSalario(int salario) {
 			this.salario = salario;
 		}
-		
-		//ToString
 
 		@Override
 		public String toString() {
-			return "Trabajadores [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", puesto=" + puesto
-					+ ", salario=" + salario + "]";
+			return "Trabajador [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", puesto=" + puesto
+					+ ", salario=" + salario + ", trabajador=" + trabajador + "]";
 		}
+
 }

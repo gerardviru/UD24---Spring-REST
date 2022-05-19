@@ -55,10 +55,6 @@ public class TrabajadorController {
 		trab_seleccionado= TrabServiceImp.trabajadorID(id);
 		
 		trab_seleccionado.setNombre(trabajador.getNombre());
-		trab_seleccionado.setApellido(trabajador.getApellido());
-		trab_seleccionado.setPuesto(trabajador.getPuesto());
-		trab_seleccionado.setSalario(trabajador.getSalario());
-		
 		
 		trab_actualizado = TrabServiceImp.actualizarTrabajador(trab_seleccionado);
 		
