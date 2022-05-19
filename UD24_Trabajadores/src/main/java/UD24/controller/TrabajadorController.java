@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +46,7 @@ public class TrabajadorController {
 	}
 	
 	@PutMapping("/trabajador/{id}")
-	public Trabajador actualizarCliente(@PathVariable(name="id")Long id,@RequestBody Trabajador trabajador) {
+	public Trabajador actualizarTrabajador(@PathVariable(name="id")Long id,@RequestBody Trabajador trabajador) {
 		
 		Trabajador trab_seleccionado= new Trabajador();
 		Trabajador trab_actualizado= new Trabajador();
@@ -58,13 +57,13 @@ public class TrabajadorController {
 		
 		trab_actualizado = TrabServiceImp.actualizarTrabajador(trab_seleccionado);
 		
-		System.out.println("El cliente actualizado es: "+ trab_actualizado);
+		System.out.println("El trabajador actualizado es: "+ trab_actualizado);
 		
 		return trab_actualizado;
 	}
 	
-	@PutMapping("/trabajadores/{id}")
-	public void eliminarTreballador(@PathVariable(name="id")Long id) {
+	@DeleteMapping("/trabajador/{id}")
+	public void eliminarTrabajadores(@PathVariable(name="id")Long id) {
 		TrabServiceImp.eliminarTrabajadores(id);
 	}
 	
