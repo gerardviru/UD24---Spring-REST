@@ -36,7 +36,13 @@ public class TrabServiceImp implements ITrabajadoresService {
 		return iTrabajadorDAO.findByNombre(Nombre);
 	}
 
-
+	 
+	public Trabajador actualizarTrabajador(Trabajador trabajador) {
+		
+		return iTrabajadorDAO.save(trabajador);
+	}
+	
+	
 	@Override
 	public void eliminarTrabajadores(Long ID) {
 		

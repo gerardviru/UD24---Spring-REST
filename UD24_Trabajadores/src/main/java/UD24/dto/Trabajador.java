@@ -90,12 +90,4 @@ public class Trabajador {
 			return "Trabajadores [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", puesto=" + puesto
 					+ ", salario=" + salario + "]";
 		}
-
-		
-		
-		
-		
-		
-		
-	
 }

@@ -26,6 +26,9 @@ public interface ITrabajadoresService {
 	public List <Trabajador> listarTrabajadoresNombre (String Nombre);
 	
 	
+	public Trabajador actualizarTrabajador(Trabajador trabajador);
+	
+	
 	//Elimina el trabajador DELETE
 	public void eliminarTrabajadores(Long ID);
 	

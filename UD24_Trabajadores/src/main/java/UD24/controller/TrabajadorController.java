@@ -20,57 +20,56 @@ import UD24.service.TrabServiceImp;
 public class TrabajadorController {
 
 	@Autowired
-	TrabServiceImp trabServideImp;
+	TrabServiceImp TrabServiceImp;
 	
 	@GetMapping("/trabajadores")
-	public List<Trabajador> listarTrabajadores(){
-				return trabServideImp.listarTrabajadores();
+	public List<Trabajador> listarTrebajador() {
+		return TrabServiceImp.listarTrabajadores();
 	}
 	
-	@GetMapping("trabajador/nombre/{nombre}")
-	public List<Trabajador> listarTrabajadoresNombre(@PathVariable(name = "nombre") String nombre) {
-		return trabServideImp.listarTrabajadoresNombre(nombre);
-	}
 	
-	@PostMapping("/trabajador")
-	public Trabajador salvarCliente(@RequestBody Trabajador trabajador) {
+	@GetMapping("/trabajador/nombre/{nombre}")
+	public List<Trabajador> listarTrabajadoresNombre(@PathVariable(name= "nombre") String nombre) {
 		
-		return trabServideImp.guardarTrabajador(trabajador);
+		return TrabServiceImp.listarTrabajadoresNombre(nombre);
 	}
+	
 	
 	@GetMapping("/trabajador/{id}")
-	public Trabajador trabajadorID(@PathVariable(name="id") Long id) {
+	public Trabajador trabajadorID (@PathVariable(name="id")Long id) {
 		
-		Trabajador trabajador= new Trabajador();
+		Trabajador trabajador = new Trabajador();
+		trabajador = TrabServiceImp.trabajadorID(id); 
 		
-		trabajador=trabServideImp.trabajadorID(id);
-		
-		System.out.println("Trabajador XID: "+trabajador);
+		System.out.println("Trabajador ID: "+ trabajador);
 		
 		return trabajador;
 	}
 	
 	@PutMapping("/trabajador/{id}")
-	public Trabajador actualizarTrabajador(@PathVariable(name="id")Long id,@RequestBody Trabajador trabajador) {
+	public Trabajador actualizarCliente(@PathVariable(name="id")Long id,@RequestBody Trabajador trabajador) {
 		
-		Trabajador trabajador_seleccionado= new Trabajador();
-		Trabajador trabajador_actualizado= new Trabajador();
+		Trabajador trab_seleccionado= new Trabajador();
+		Trabajador trab_actualizado= new Trabajador();
 		
-		trabajador_seleccionado= trabServideImp.trabajadorID(id);
+		trab_seleccionado= TrabServiceImp.trabajadorID(id);
 		
-		trabajador.setNombre(trabajador.getNombre());
-		trabajador.setApellido(trabajador.getApellido());
-		trabajador.setPuesto(trabajador.getPuesto());
-		trabajador.setSalario(trabajador.getSalario());
+		trab_seleccionado.setNombre(trabajador.getNombre());
+		trab_seleccionado.setApellido(trabajador.getApellido());
+		trab_seleccionado.setPuesto(trabajador.getPuesto());
+		trab_seleccionado.setSalario(trabajador.getSalario());
 		
-		System.out.println("El cliente actualizado es: "+ trabajador_actualizado);
 		
-		return trabajador_actualizado;
+		trab_actualizado = TrabServiceImp.actualizarTrabajador(trab_seleccionado);
+		
+		System.out.println("El cliente actualizado es: "+ trab_actualizado);
+		
+		return trab_actualizado;
 	}
 	
-	@DeleteMapping("/trabajador/{id}")
-	public void eleiminarCliente(@PathVariable(name="id")Long id) {
-		trabServideImp.eliminarTrabajadores(id);
+	@PutMapping("/trabajadores/{id}")
+	public void eliminarTreballador(@PathVariable(name="id")Long id) {
+		TrabServiceImp.eliminarTrabajadores(id);
 	}
 	
 }
